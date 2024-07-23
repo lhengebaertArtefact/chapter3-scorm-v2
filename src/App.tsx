@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Quiz from "./components/Quiz";
 import Quiz2 from "./components/Quiz2";
-import { setCompletionStatus } from "./scorm/Scorm";
+import { finishLMS, initializeLMS, setCompletionStatus } from "./scorm/Scorm";
 import ChatZone from "./components/ChatZone/ChatZone.tsx";
 import DisplayZone from "./components/DisplayZone/DisplayZone.tsx";
 import ProgressZone from "./components/ProgressZone/ProgressZone.tsx";
@@ -29,6 +29,13 @@ const App = () => {
     <Quiz id="objectif_quiz1" onComplete={handleComplete} />
     <Quiz2 id="objectif_quiz2" onComplete={handleComplete} />
   */
+
+    useEffect(() => {
+      initializeLMS();
+      return () => {
+        finishLMS();
+      };
+    }, []);
 
     const objectives:Objective[] = [
       {
