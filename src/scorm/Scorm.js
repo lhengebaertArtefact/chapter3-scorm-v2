@@ -2,7 +2,7 @@ import { SCORM } from "pipwerks-scorm-api-wrapper";
 
 function initializeLMS() {
   if (!SCORM.init()) {
-    alert("SCORM initialization failed");
+    //alert("SCORM initialization failed");
   }
 }
 
