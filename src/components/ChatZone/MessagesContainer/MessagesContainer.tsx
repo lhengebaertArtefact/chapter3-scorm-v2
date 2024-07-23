@@ -1,34 +1,34 @@
-import React from 'react'
-import { Objective } from '../../../types/Objective'
+import React from "react";
+import { Message } from "../../../types/Message";
+import Quiz from "./Quiz/Quiz.tsx";
+import Video from "../../../components/Video.tsx";
+import MiniGame from "../../../components/MiniGame.tsx";
 
+const MessagesContainer = ({ messages }: { messages: Message[] }) => {
+  const renderMessage = (message: Message) => {
+    switch (message.type) {
+      case "text":
+        return (
+          <div key={message.id} className="bot-message">
+            {message.content}
+          </div>
+        );
+      case "quiz":
+        return <Quiz key={message.id} objective={message.content} />;
+      case "video":
+        return <Video key={message.id} objective={message.content} />;
+      case "miniGame":
+        return <MiniGame key={message.id} objective={message.content} />;
+      default:
+        return null;
+    }
+  };
 
-import Quiz from './Quiz/Quiz.tsx'
-
-
-const MessagesContainer = ({
-  objectives
-}: {
-  objectives: Objective[]
-}) => {
   return (
-    <div
-      className='w-5/6 h-3/4 border-2 flex flex-col justify-start items-start'
-    >
-      {
-        objectives.map((objectif) => {
-          if (objectif.type !== 'quiz') return null
-
-          return (
-            <Quiz
-              objectif={objectif}
-              key={objectif.id}
-            />
-          )
-
-        })
-      }
+    <div className="w-5/6 h-3/4 border-2 flex flex-col justify-start items-start">
+      {messages.map(renderMessage)}
     </div>
-  )
-}
+  );
+};
 
-export default MessagesContainer
+export default MessagesContainer;

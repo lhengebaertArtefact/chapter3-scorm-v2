@@ -1,18 +1,18 @@
 export interface VideoObjective {
-    type:'video'
-    id:string
-    content:string
+    type:'video';
+    id:string;
+    content:string;
 }
 
 export interface MiniGameObjective {
-    type:'miniGame'
-    id:string
-    content:string
+    type:'miniGame';
+    id:string;
+    content:string;
 }
 
 export interface QuizObjective {
-    type:'quiz'
-    id:string
+    type:'quiz';
+    id:string;
     content:{
         question:string
         answers:{
