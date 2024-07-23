@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import Quiz from "./components/Quiz";
 import Quiz2 from "./components/Quiz2";
 import { setCompletionStatus } from "./scorm/Scorm";
+import ProgressBar from "./components/ProgressBar";
 
 const App = () => {
   const [completedObjectives, setCompletedObjectives] = useState([]);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     if (
@@ -13,6 +15,8 @@ const App = () => {
     ) {
       setCompletionStatus("completed");
     }
+    const progressPercentage = (completedObjectives.length / 2) * 100;
+    setProgress(progressPercentage);
   }, [completedObjectives]);
 
   const handleComplete = (id) => {
@@ -22,6 +26,7 @@ const App = () => {
   return (
     <div>
       <h1>SCORM Objectives</h1>
+      <ProgressBar progress={progress} />
       <Quiz id="objectif_quiz1" onComplete={handleComplete} />
       <Quiz2 id="objectif_quiz2" onComplete={handleComplete} />
     </div>

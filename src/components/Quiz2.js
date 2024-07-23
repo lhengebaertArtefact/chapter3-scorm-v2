@@ -24,8 +24,8 @@ const Quiz2 = ({ id, onComplete }) => {
   const handleSubmit = () => {
     if (selectedOption !== null) {
       const score = selectedOption === "correct" ? 100 : 0;
-      recordObjectiveProgress(id, score);
       setObjectiveStatus(id, "completed");
+      recordObjectiveProgress(id, score);
       setIsCompleted(true);
       onComplete(id);
     }

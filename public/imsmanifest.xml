@@ -10,7 +10,7 @@ Provided by Rustici Software - www.scorm.com.
 <schema>ADL SCORM</schema>
 <schemaversion>1.2</schemaversion>
 </metadata>
-<organizations default="org1">
+    <organizations default="org1">
         <organization identifier="org1">
             <title>Chapter 3</title>
             <item identifier="single_item" identifierref="single_resource">
