@@ -29,7 +29,7 @@ const DisplayZone = () => {
                 </div>
             </div>
             <div
-                className='w-full h-[90%] bg-red-400'
+                className='w-full h-[90%] border-2 border-bordersCyan'
             >
                 <DisplayedElement/>
             </div>

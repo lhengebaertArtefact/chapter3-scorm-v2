@@ -5,22 +5,31 @@ export const messages: Message[] = [
   {
     type: 'text',
     id: 'msg1',
-    content: 'Bienvenue dans ce module d\'apprentissage !',
-    objectifID:0
+    content: 'Bonjour ! Je suis content de vous retrouver :)',
+    objectifID:0,
+    apparitionDelay:0
   },
   {
     type: 'text',
     id: 'msg2',
-    content: 'Nous allons commencer avec une question simple.',
-    objectifID:0
+    content: 'Vous connaissez maintenant l\'incroyable potentiel de l\'IA générative, mais vous savez aussi que l\'IA n\'est pas magique.',
+    objectifID:0,
+    apparitionDelay:1000
+  },
+  {
+    type: 'text',
+    id: 'msg3',
+    content: 'Parlons des risques de l\'IA générative.',
+    objectifID:0,
+    apparitionDelay:2000
   },
   objectives[0],
   {
     type: 'text',
-    id: 'msg3',
-    content: 'Félicitations pour votre réponse ! Passons à la suite.',
-    objectifID:1
+    id: 'msg4',
+    content: 'Regardez cette vidéo pour en savoir plus sur les limites techniques de l\'IA générative.',
+    objectifID:1,
+    apparitionDelay:1000
   },
-  objectives[1],
-  objectives[2]
+  objectives[1]
 ];

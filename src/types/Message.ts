@@ -7,6 +7,7 @@ export interface TextMessage {
   id: string;
   content: string;
   objectifID:number
+  apparitionDelay:number
 }
 
 

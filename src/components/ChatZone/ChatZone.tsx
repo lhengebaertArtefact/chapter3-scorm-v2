@@ -28,7 +28,11 @@ const ChatZone = () => {
                 alt="a ui img"
               />
               <div className="w-11/12 h-full bg-white/50 mx-1 flex flex-row justify-start items-center pl-2">
-                <span className="text-lg">aaaaa</span>
+                <span className="text-lg">
+                  {
+                    ///////////// INPUT BOTTOM
+                  }
+                </span>
               </div>
               <img className="h-full" src={inputSide} alt="a ui image" />
             </div>

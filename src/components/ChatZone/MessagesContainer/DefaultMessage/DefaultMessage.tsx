@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import AIMessageTopBorder from "../../../../assets/msgAIBorderTop.png";
 import AIMessageBottomBorder from "../../../../assets/msgAIBorderBot.png";
@@ -7,12 +7,34 @@ import AIMessageBottomBG from "../../../../assets/msgAIBot.png";
 import { TextMessage } from '../../../../types/Message';
 
 const DefaultMessage = ({
-    message
+    message,
+    container
 }: {
     message: TextMessage
+    container:HTMLDivElement|null
 }) => {
+
+    const [isDisplayed, setIsDisplayed] = useState(false)
+
+    useEffect(()=>{
+        setTimeout(()=>{
+            setIsDisplayed(true)
+        },message.apparitionDelay)
+    },[])
+
+    useEffect(()=>{
+        if(isDisplayed){
+            if(container){
+                container.scrollTo({
+                    top:container.clientHeight,
+                    behavior:'smooth'
+                })
+            }
+        }
+    },[isDisplayed])
+
     return (
-        <div key={message.id} className="h-fit w-4/5 my-2 relative">
+        <div key={message.id} className={`h-fit w-4/5 my-2 relative ${isDisplayed ? '' : 'hidden'}`}>
             <img
                 className="h-7 absolute -left-1 -top-1"
                 src={AIMessageTopBorder}
