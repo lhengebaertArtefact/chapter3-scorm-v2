@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Objective, QuizObjective } from "../../../../types/Objective";
 
 import AIMessageTopBorder from "../../../../assets/msgAIBorderTop.png";
@@ -9,8 +9,12 @@ import {
   recordObjectiveProgress,
   setObjectiveStatus,
 } from "../../../../scorm/Scorm";
+import { GlobalContext } from "../../../../context/GlobalContext";
 
 const Quiz = ({ objective }: { objective: QuizObjective }) => {
+
+  const { currentObjective, setCurrentObjective } = useContext(GlobalContext)
+
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
 
@@ -24,6 +28,7 @@ const Quiz = ({ objective }: { objective: QuizObjective }) => {
     setObjectiveStatus(objective.id, "completed");
     setIsAnswered(true);
     setSelectedAnswer(answerId);
+    setCurrentObjective(currentObjective+1)
   };
 
   const getAnswerClassNames = (answerId: number) => {

@@ -4,6 +4,7 @@ export const objectives:Objective[] = [
     {
         type: "quiz",
         id: "objectif_quiz1",
+        order:0,
         content: {
           question: "What is 10 * 10 ?",
           answers: [
@@ -22,6 +23,7 @@ export const objectives:Objective[] = [
       {
         type: "quiz",
         id: "objectif_quiz2",
+        order:1,
         content: {
           question: "What is France's capital ?",
           answers: [
@@ -44,6 +46,7 @@ export const objectives:Objective[] = [
       {
         type:"video",
         id:'videoObjective1',
+        order:2,
         content:{
             src:'URL_DE_LA_VIDEO',
             miniature:'URL_DE_LA_MINIATURE'

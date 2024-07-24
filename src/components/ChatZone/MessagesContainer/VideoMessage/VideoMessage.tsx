@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { VideoObjective } from "../../../../types/Objective";
+import { GlobalContext } from "../../../../context/GlobalContext";
 
 
 const VideoMessage = ({ objective }: { objective: VideoObjective }) => {
 
-  console.log(objective)
+  const {setCurrentDisplayElement} = useContext(GlobalContext)
+
+ 
 
   return (
     <div className="video-container"
-      onClick={()=>console.log("aaaaa")}
+      onClick={()=>setCurrentDisplayElement(objective)}
     >
       <video controls>
         <source src={objective.content.src} type="video/mp4" />

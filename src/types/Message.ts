@@ -6,6 +6,7 @@ export interface TextMessage {
   type: 'text';
   id: string;
   content: string;
+  objectifID:number
 }
 
 

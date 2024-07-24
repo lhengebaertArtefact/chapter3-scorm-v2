@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Message } from "../../../types/Message";
 import Quiz from "./Quiz/Quiz";
 
@@ -9,19 +9,26 @@ import { GlobalContext } from "../../../context/GlobalContext";
 
 const MessagesContainer = () => {
 
-  const {messages} = useContext(GlobalContext)
+  const {messages, currentObjective} = useContext(GlobalContext)
+
+  const [currentRenderedMessages, setCurrentRenderedMessage] = useState<Message[]>([])
  
 
 
   const renderMessage = (message: Message) => {
+    console.log(message)
     switch (message.type) {
       case "text":
-        return <DefaultMessage key={message.id} message={message} />
+        if(message.objectifID > currentObjective) return null
+          return <DefaultMessage key={message.id} message={message} />
       case "quiz":
+        if(message.order > currentObjective) return null
         return <Quiz key={message.id} objective={message} />;
       case "video":
+        if(message.order > currentObjective) return null
         return <VideoMessage key={message.id} objective={message} />;
       case "miniGame":
+        if(message.order > currentObjective) return null
         return <MiniGame key={message.id} objective={message} />;
       default:
         return null;
