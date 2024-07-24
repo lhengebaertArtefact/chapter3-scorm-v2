@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import { GlobalContext } from '../../../context/GlobalContext'
 import { Objective } from '../../../types/Objective'
+import VideoElement from './VideoElement/VideoElement'
 
 const DisplayedElement = () => {
 
@@ -12,7 +13,7 @@ const DisplayedElement = () => {
         if(!element) return null
         switch (element.type) {
           case "video":
-            return <span>VIDEO</span>
+            return <VideoElement video={element} />
           case "quiz":
             return <span>QUIZ</span>;
 
@@ -23,7 +24,7 @@ const DisplayedElement = () => {
 
   return (
     <div
-        className='h-full w-full'
+        className='h-full w-full flex items-center justify-center'
     >
         {
             renderElement(currentDisplayElement)

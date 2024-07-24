@@ -1,4 +1,6 @@
 import { Objective } from "../types/Objective";
+import video from '../assets/video.mp4'
+import miniature from '../assets/miniatureVideo.jpeg'
 
 export const objectives:Objective[] = [
     {
@@ -37,8 +39,15 @@ export const objectives:Objective[] = [
         order:1,
         apparitionDelay:2000,
         content:{
-            src:'URL_DE_LA_VIDEO',
-            miniature:'URL_DE_LA_MINIATURE'
+            src:video,
+            miniature:miniature
         }
+      },
+      {
+        type:"miniGame",
+        id:'miniGameObjective1',
+        order:2,
+        apparitionDelay:0,
+        content:'MINIGAME 1'
       }
 ]

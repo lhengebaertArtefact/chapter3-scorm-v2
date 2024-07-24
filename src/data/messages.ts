@@ -31,5 +31,6 @@ export const messages: Message[] = [
     objectifID:1,
     apparitionDelay:1000
   },
-  objectives[1]
+  objectives[1],
+  objectives[2]
 ];
