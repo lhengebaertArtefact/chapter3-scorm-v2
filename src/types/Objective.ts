@@ -1,7 +1,10 @@
 export interface VideoObjective {
     type:'video';
     id:string;
-    content:string;
+    content:{
+        src:string,
+        miniature:string
+    };
 }
 
 export interface MiniGameObjective {

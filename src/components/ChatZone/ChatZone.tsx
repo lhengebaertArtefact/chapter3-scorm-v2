@@ -1,14 +1,14 @@
 import React from "react";
-import AInsteinIcon from "./AInsteinIcon/AInsteinIcon.tsx";
-import MessagesContainer from "./MessagesContainer/MessagesContainer.tsx";
+import AInsteinIcon from "./AInsteinIcon/AInsteinIcon";
+import MessagesContainer from "./MessagesContainer/MessagesContainer";
 
 import bgChatBox from "../../assets/BgChatbox.png";
 import inputSide from "../../assets/InputDeco.png";
 import sendButton from "../../assets/sendButton.svg";
-import { Objective } from "../../types/Objective.ts";
-import { messages } from "../../data/messages.ts";
+import { Objective } from "../../types/Objective";
 
-const ChatZone = ({ objectives }: { objectives: Objective[] }) => {
+
+const ChatZone = () => {
   return (
     <div className="col-span-1 row-span-2 sm:row-span-6 relative">
       <img
@@ -18,7 +18,7 @@ const ChatZone = ({ objectives }: { objectives: Objective[] }) => {
       />
       <div className="w-full  h-full z-10 absolute left-0 top-0 flex flex-col justify-start items-center">
         <AInsteinIcon />
-        <MessagesContainer messages={messages} />
+        <MessagesContainer />
         <div className="w-full bg-white/20 h-1/6 flex flex-row justify-center items-start px-1 pt-6">
           <div className="w-4/5 h-fit flex flex-row justify-between items-center">
             <div className="w-full h-10 max-h-full flex flex-row justify-start items-start">
