@@ -8,14 +8,14 @@ const VideoElement = ({
     video:VideoObjective
 }) => {
 
-    const {setCurrentObjective, currentObjective} = useContext(GlobalContext)
+    const {setIsCurrentDisplayedElementCompleted} = useContext(GlobalContext)
     
 
   return (
     <video 
         controls 
         autoPlay
-        onEnded={()=>setCurrentObjective(currentObjective +1)}
+        onEnded={()=>setIsCurrentDisplayedElementCompleted(true)}
     >
         <source src={video.content.src} type="video/mp4"  />
         Your browser does not support the video tag.

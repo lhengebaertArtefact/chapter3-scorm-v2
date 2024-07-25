@@ -2,12 +2,13 @@ import React, { useContext, useEffect } from 'react'
 import { GlobalContext } from '../../../context/GlobalContext'
 import { Objective } from '../../../types/Objective'
 import VideoElement from './VideoElement/VideoElement'
+import MinigameElement from './MinigameElement/MinigameElement'
+import { objectives } from '../../../data/objectives'
 
 const DisplayedElement = () => {
 
     const { currentDisplayElement } = useContext(GlobalContext)
 
-    useEffect(()=>console.log(currentDisplayElement),[currentDisplayElement])
 
     const renderElement = (element: null|Objective) => {
         if(!element) return null
@@ -18,7 +19,7 @@ const DisplayedElement = () => {
             return <span>QUIZ</span>;
 
           case "miniGame":
-            return <span>MINIGAME</span>;
+            return <MinigameElement minigame={element} />;
         }
       };
 

@@ -57,6 +57,7 @@ const App = () => {
 
   const [currentObjective, setCurrentObjective] = useState<number>(0)
   const [currentDisplayElement, setCurrentDisplayElement] = useState<Objective|null>(null)
+  const [isCurrentDisplayedElementCompleted, setIsCurrentDisplayedElementCompleted] = useState<boolean>(false)
 
   return (
     <GlobalContext.Provider
@@ -66,7 +67,9 @@ const App = () => {
         currentObjective,
         setCurrentObjective:(value)=>setCurrentObjective(value),
         currentDisplayElement:currentDisplayElement,
-        setCurrentDisplayElement:(value)=>setCurrentDisplayElement(value)
+        setCurrentDisplayElement:(value)=>setCurrentDisplayElement(value),
+        isCurrentDisplayedElementCompleted:isCurrentDisplayedElementCompleted,
+        setIsCurrentDisplayedElementCompleted:(value)=>setIsCurrentDisplayedElementCompleted(value)
       }}
     >
       <div className="w-full h-full grid grid-cols-1 grid-rows-5 sm:grid-cols-3 sm:grid-rows-6 gap-6 p-6 bg-gradient-to-br from-bgGradientBlue1 to-bgGradientBlue2">

@@ -10,7 +10,9 @@ export type GlobalContextType = {
     currentObjective:number,
     setCurrentObjective:(value:number)=>void,
     currentDisplayElement:Objective|null,
-    setCurrentDisplayElement:(value:Objective|null)=>void
+    setCurrentDisplayElement:(value:Objective|null)=>void,
+    isCurrentDisplayedElementCompleted:boolean
+    setIsCurrentDisplayedElementCompleted:(value:boolean)=>void
 }
 
 export const GlobalContext = createContext<GlobalContextType>({
@@ -19,5 +21,7 @@ export const GlobalContext = createContext<GlobalContextType>({
     currentObjective:0,
     setCurrentObjective:()=>{},
     currentDisplayElement:null,
-    setCurrentDisplayElement:()=>{}
+    setCurrentDisplayElement:()=>{},
+    isCurrentDisplayedElementCompleted:false,
+    setIsCurrentDisplayedElementCompleted:()=>{}
 })

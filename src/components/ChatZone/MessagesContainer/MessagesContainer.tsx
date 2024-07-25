@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { Message } from "../../../types/Message";
 import Quiz from "./Quiz/Quiz";
 
-import MiniGame from "../../../components/MiniGame";
 import DefaultMessage from "./DefaultMessage/DefaultMessage";
 import VideoMessage from "./VideoMessage/VideoMessage";
 import { GlobalContext } from "../../../context/GlobalContext";
+import MinigameMessage from "./MinigameMessage/MinigameMessage";
 
 const MessagesContainer = () => {
 
@@ -28,7 +28,7 @@ const MessagesContainer = () => {
         return <VideoMessage key={message.id} objective={message} container={messageContainerRef.current} />;
       case "miniGame":
         if(message.order > currentObjective) return null
-        return <MiniGame key={message.id} objective={message} container={messageContainerRef.current} />;
+        return <MinigameMessage key={message.id} objective={message} container={messageContainerRef.current} />;
     }
   };
 

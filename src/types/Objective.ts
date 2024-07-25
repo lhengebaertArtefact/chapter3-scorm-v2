@@ -1,3 +1,5 @@
+import { Minigame } from "./Minigames";
+
 export interface VideoObjective {
     type:'video';
     id:string;
@@ -14,7 +16,10 @@ export interface MiniGameObjective {
     id:string;
     order:number
     apparitionDelay:number
-    content:string;
+    content:{
+        message:string
+        game:Minigame
+    }
 }
 
 export interface QuizObjective {

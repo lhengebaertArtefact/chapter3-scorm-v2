@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@pixi/gif": "^3.0.1",
     "pipwerks-scorm-api-wrapper": "^0.1.2",
+    "pixi.js": "^8.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
-    "scorm-again": "^1.7.1",
-    "typescript": "^5.5.4"
+    "scorm-again": "^1.7.1"
   },
   "homepage": "./",
   "scripts": {
