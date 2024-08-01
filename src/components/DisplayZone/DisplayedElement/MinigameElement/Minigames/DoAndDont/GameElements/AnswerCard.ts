@@ -7,19 +7,39 @@ export default class AnswerCard extends BaseItem {
     private text:string
     private width:number
     private id:number
+    public correctAnswer:string
     private yPos:number
     private isDragging:boolean
     private boundary:EventBoundary
+    private pushCard:(el:AnswerCard,label:string)=>void
+    private removeCard:(el:AnswerCard)=>void
     
 
     constructor(
-        {text,width,id}:{text:string,width:number,id:number}
+        {
+            text,
+            width,
+            id, 
+            correctAnswer,
+            pushCard, 
+            removeCard
+        }:{
+            text:string,
+            width:number,
+            id:number,
+            correctAnswer:string
+            pushCard:(el:AnswerCard,label:string)=>void,
+            removeCard:(el:AnswerCard)=>void
+        }
     ){
         super()
 
         this.text = text
         this.width = width
         this.id = id
+        this.correctAnswer = correctAnswer
+        this.pushCard = pushCard
+        this.removeCard = removeCard
 
         this.yPos = 0
         this.isDragging = false
@@ -35,6 +55,7 @@ export default class AnswerCard extends BaseItem {
 
     onPointerDown(e:FederatedPointerEvent){
         this.isDragging = true
+        this.removeCard(this)
     }
 
     onPointerUp(e:FederatedPointerEvent){
@@ -47,7 +68,7 @@ export default class AnswerCard extends BaseItem {
         this.item.visible=true
 
         if(hitResult && (hitResult.label === 'DO' || "DON'T")){
-            console.log(hitResult)
+            this.pushCard(this,hitResult.label)
         }else{
             this.item.x = this.screenSize.width * 0.5
             this.item.y = this.yPos

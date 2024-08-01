@@ -32,7 +32,7 @@ const Quiz = ({ objective, container }: { objective: QuizObjective, container: H
     if (isDisplayed || isAnswered) {
       if (container) {
         container.scrollTo({
-          top: container.clientHeight,
+          top: container.scrollHeight,
           behavior: 'smooth'
         })
       }

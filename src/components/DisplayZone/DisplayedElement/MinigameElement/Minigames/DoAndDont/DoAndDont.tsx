@@ -1,7 +1,9 @@
-import React, { MutableRefObject, useEffect, useRef } from 'react'
+import React, { MutableRefObject, useContext, useEffect, useRef } from 'react'
 import PixiApp from '../Commons/PixiApp'
 import DoDontArea from './GameElements/DoDontArea'
 import AnswerCard from './GameElements/AnswerCard'
+import CheckoutButton from './GameElements/CheckoutButton'
+import { GlobalContext } from '../../../../../../context/GlobalContext'
 
 const DoAndDont = ({
     content
@@ -10,10 +12,12 @@ const DoAndDont = ({
         answers: {
             label: string
             id: number
-            correctAnswer: 'do' | 'dont'
+            correctAnswer: 'DO' | "DON'T"
         }[]
     }
 }) => {
+
+    const {setIsCurrentDisplayedElementCompleted} = useContext(GlobalContext)
 
     const containerRef: MutableRefObject<HTMLDivElement | null> = useRef(null);
 
@@ -36,25 +40,44 @@ const DoAndDont = ({
                     app.elapsedTime = currentTime - startTime;
                 });
 
-                new DoDontArea({
+                
+
+                const doArea = new DoDontArea({
                     width: 0.3,
                     height: 0.9,
                     x: 0.05,
                     y: 0.1,
                     label: 'DO',
                     isLabelOnLeft: true,
-                    fontSize: 32
+                    fontSize: 26
                 })
 
-                new DoDontArea({
+                const dontArea = new DoDontArea({
                     width: 0.3,
                     height: 0.9,
                     x: 0.65,
                     y: 0.1,
                     label: "DON'T",
                     isLabelOnLeft: false,
-                    fontSize: 32
+                    fontSize: 26
                 })
+
+                const areas = [doArea, dontArea]
+
+                const pushCardIntoZone = (el:AnswerCard, label:string) => {
+                    
+                    for(const area of areas){
+                        if(area.label === label){
+                            area.addCard(el)
+                        }
+                    }
+                }
+
+                const removeCardFromZone = (el:AnswerCard) => {
+                    for(const area of areas){
+                        area.removeCard(el)
+                    }
+                }
 
                 const answerArray:AnswerCard[] = []
 
@@ -63,7 +86,10 @@ const DoAndDont = ({
                         new AnswerCard({
                             text: answer.label,
                             width: 0.2,
-                            id: answer.id
+                            id: answer.id, 
+                            correctAnswer:answer.correctAnswer,
+                            pushCard:pushCardIntoZone,
+                            removeCard:removeCardFromZone
                         })
                     )
 
@@ -73,6 +99,17 @@ const DoAndDont = ({
                     card.replaceElement()
                 }
 
+                const checkoutAnswers = () => {
+                    for(const area of areas){
+                        area.checkAnswers()
+                    }
+                    setIsCurrentDisplayedElementCompleted(true)
+                }
+
+                new CheckoutButton({
+                    width:0.2,
+                    checkout:checkoutAnswers
+                })
 
 
 

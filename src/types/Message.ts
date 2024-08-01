@@ -1,4 +1,4 @@
-import { VideoObjective, MiniGameObjective, QuizObjective } from '../types/Objective';
+import { VideoObjective, MiniGameObjective, QuizObjective, Objective } from '../types/Objective';
 
 
 
@@ -12,4 +12,4 @@ export interface TextMessage {
 
 
 
-export type Message = TextMessage | QuizObjective | VideoObjective | MiniGameObjective;
+export type Message = TextMessage | Objective;

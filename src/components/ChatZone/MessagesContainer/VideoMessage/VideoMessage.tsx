@@ -10,7 +10,7 @@ import AIMessageBottomBG from "../../../../assets/msgAIBot.png";
 
 const VideoMessage = ({ objective, container }: { objective: VideoObjective, container: HTMLDivElement | null }) => {
 
-  const { setCurrentDisplayElement, currentDisplayElement, isCurrentDisplayedElementCompleted, currentObjective, setCurrentObjective } = useContext(GlobalContext)
+  const { setCurrentDisplayElement, currentDisplayElement, isCurrentDisplayedElementCompleted, setIsCurrentDisplayedElementCompleted, currentObjective, setCurrentObjective } = useContext(GlobalContext)
 
   const [isDisplayed, setIsDisplayed] = useState(false)
   const [isValidationMessageDisplayed, setIsValidationMessageDisplayed] = useState<boolean>(false)
@@ -25,7 +25,7 @@ const VideoMessage = ({ objective, container }: { objective: VideoObjective, con
     if (isDisplayed) {
       if (container) {
         container.scrollTo({
-          top: container.clientHeight + 1000,
+          top: container.scrollHeight,
           behavior: 'smooth'
         })
       }
@@ -35,6 +35,7 @@ const VideoMessage = ({ objective, container }: { objective: VideoObjective, con
   useEffect(() => {
     if(isCurrentDisplayedElementCompleted && currentDisplayElement === objective){
       setIsValidationMessageDisplayed(true)
+      setIsCurrentDisplayedElementCompleted(false)
     }
   }, [isCurrentDisplayedElementCompleted])
 
@@ -42,7 +43,7 @@ const VideoMessage = ({ objective, container }: { objective: VideoObjective, con
     if(isValidationMessageDisplayed){
       if (container) {
         container.scrollTo({
-          top: container.clientHeight + 1000,
+          top: container.scrollHeight,
           behavior: 'smooth'
         })
       }

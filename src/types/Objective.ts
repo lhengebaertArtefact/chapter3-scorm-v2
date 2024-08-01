@@ -22,6 +22,26 @@ export interface MiniGameObjective {
     }
 }
 
+export interface DoubleImageQuizObjective {
+    type:'doubleImageQuiz',
+    id:string,
+    order:number,
+    apparitionDelay:number,
+    content:{
+        question:string
+        images:string[]
+        answers:{
+            id:number
+            label:string
+        }[],
+        aiResponse:{
+            id:number,
+            label:string
+        }[],
+        correctAnswerID:number
+    }
+}
+
 export interface QuizObjective {
     type:'quiz';
     id:string;
@@ -41,4 +61,4 @@ export interface QuizObjective {
     }
 }
 
-export type Objective = VideoObjective | MiniGameObjective | QuizObjective
+export type Objective = VideoObjective | MiniGameObjective | QuizObjective | DoubleImageQuizObjective

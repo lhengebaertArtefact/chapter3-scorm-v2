@@ -6,6 +6,7 @@ import DefaultMessage from "./DefaultMessage/DefaultMessage";
 import VideoMessage from "./VideoMessage/VideoMessage";
 import { GlobalContext } from "../../../context/GlobalContext";
 import MinigameMessage from "./MinigameMessage/MinigameMessage";
+import DoubleImageQuizMessage from "./DoubleImageQuizMessage/DoubleImageQuizMessage";
 
 const MessagesContainer = () => {
 
@@ -29,6 +30,9 @@ const MessagesContainer = () => {
       case "miniGame":
         if(message.order > currentObjective) return null
         return <MinigameMessage key={message.id} objective={message} container={messageContainerRef.current} />;
+      case "doubleImageQuiz":
+        if(message.order > currentObjective) return null
+        return <DoubleImageQuizMessage key={message.id} objective={message} container={messageContainerRef.current}/>;
     }
   };
 

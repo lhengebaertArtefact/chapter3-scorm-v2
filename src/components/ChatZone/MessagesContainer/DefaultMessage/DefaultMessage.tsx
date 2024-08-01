@@ -26,7 +26,7 @@ const DefaultMessage = ({
         if(isDisplayed){
             if(container){
                 container.scrollTo({
-                    top:container.clientHeight,
+                    top:container.scrollHeight,
                     behavior:'smooth'
                 })
             }

@@ -4,7 +4,7 @@ export interface DoAndDontMinigame {
         answers:{
             label:string
             id:number
-            correctAnswer:'do'|'dont'
+            correctAnswer:"DO"|"DON'T"
         }[]
     }
 }
